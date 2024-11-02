@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Input from '../LoginComponents/Input';
 import Square from '../LoginComponents/Square';
 import { GoogleLogin } from '@react-oauth/google';
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 import { Link, useNavigation } from 'react-router-dom';
 import { useSubmit } from 'react-router-dom';
 import { validate } from 'react-email-validator';

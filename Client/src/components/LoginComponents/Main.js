@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Input from './Input'
 import Square from './Square'
 import {GoogleLogin} from '@react-oauth/google'
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 import { useSubmit } from 'react-router-dom'
 import { useNavigation } from 'react-router-dom'
 import { validate } from 'react-email-validator'
