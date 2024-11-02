@@ -24,7 +24,7 @@ export default function Profile() {
 
   const handleUpload = () => {
     if (selectedFile) {
-      // Ask for confirmation before uploading
+  
       const isConfirmed = window.confirm(
         "Are you sure you want to upload this image?"
       );

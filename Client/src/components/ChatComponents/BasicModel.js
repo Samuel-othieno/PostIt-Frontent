@@ -112,14 +112,14 @@ export default function BasicModal({ handleClose, open }) {
   const createGroupHandler = async () => {
     if (isCreatingGroup) return;
 
-    setIsCreatingGroup(true); 
+    setIsCreatingGroup(true);
     const userdata = selectedUsers.map((data) => data._id);
 
     if (Valref.current.value === "") {
-      setIsCreatingGroup(false); 
+      setIsCreatingGroup(false);
       return notify("error", "Please specify the group name!");
     } else if (selectedUsers.length < 2) {
-      setIsCreatingGroup(false); 
+      setIsCreatingGroup(false);
       return notify("error", "Should add atleast 2 people!");
     }
     const bodyData = {

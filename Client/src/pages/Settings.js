@@ -2,15 +2,15 @@ import React from "react";
 import Profile from "../components/SettingsComponents/Profile";
 import InputName from "../components/SettingsComponents/InputName";
 import InputEmail from "../components/SettingsComponents/InputEmail";
-import { useState,useEffect} from "react";
-import {setUser} from '../services/Actions/User/actions'
+import { useState, useEffect } from "react";
+import { setUser } from '../services/Actions/User/actions'
 import { useDispatch } from 'react-redux';
 import { ToastContainer, toast } from "react-toastify";
 import InfoIcon from '@mui/icons-material/Info';
 
 export default function Settings() {
 
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const storedData = JSON.parse(localStorage.getItem("info"));
   const [name, setName] = useState(storedData.name);
   const [email, setEmail] = useState(storedData.email);
@@ -63,12 +63,11 @@ export default function Settings() {
         }
       );
       const data = await response.json();
-      if (data.status === "success")
-      {
+      if (data.status === "success") {
         notify("success");
         dispatch(setUser(data.updatedUser));
       }
-        
+
       else notify("error");
     };
     updateData();
@@ -84,8 +83,8 @@ export default function Settings() {
             Public profile
           </div>
           <div className="flex items-center mt-2">
-          <InfoIcon fontSize='10' color="info"></InfoIcon>
-          <div className="font-Poppins  text-xs">To update your profile picture, select an image and upload it.</div>
+            <InfoIcon fontSize='10' color="info"></InfoIcon>
+            <div className="font-Poppins  text-xs">To update your profile picture, select an image and upload it.</div>
           </div>
           <Profile></Profile>
           <div className="mt-[3%] flex flex-col gap-8">
