@@ -3,14 +3,14 @@ import Input from '../LoginComponents/Input';
 import Square from '../LoginComponents/Square';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
-import { Link, useNavigation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSubmit } from 'react-router-dom';
 import { validate } from 'react-email-validator';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import { Button, Paper, Typography, IconButton } from '@mui/material';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
-import { ToastContainer, toast } from "react-toastify";
+import {toast } from "react-toastify";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { FaArrowCircleLeft } from 'react-icons/fa';
@@ -51,7 +51,6 @@ const PasswordRequirements = ({ password }) => {
 };
 
 export default function Main() {
-  const navigation = useNavigation();
   const submit = useSubmit();
   const [SignUpData, setSignUpData] = useState({ name: '', email: '', password: '' });
   const [submitting, setSubmitting] = useState(false);
