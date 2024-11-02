@@ -85,25 +85,6 @@ Welcome to PostIt, the platform designed for effortless and engaging conversatio
 The illustration above showcases a conversation between two separate tabs opened in Chrome, simulating two seperate accounts chatting with each other. It demonstrates the transmission of messages along with the typing effect." -->
 
 # Tech stack
-
-<a id="frontend"> </a>
-
-#### Frontend
-
-- ReactJS
-- Javascript
-- Redux
-- MaterialUI
-- TailWindCSS
-
-<a id="backend"> </a>
-
-#### Backend
-
-- Nodejs
-- Express
-- Prisma
-
 | Frontend                                  | Backend                            |
 |:------------------------------------------|:-----------------------------------|
 | React                                     | Node.js                            |
@@ -118,14 +99,6 @@ The illustration above showcases a conversation between two separate tabs opened
 | Babel                                     | JSON Web Token                     |
 | Tailwind                                  | Nodemon                            |
 | Mantine                                   | Express-validator                  |
-
-
-<a id="other"> </a>
-
-#### Other Tools
-
-- Socket IO
-- NPM Packages
 
 <a id="instructions"> </a>
 
