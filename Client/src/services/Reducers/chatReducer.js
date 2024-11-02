@@ -35,7 +35,7 @@ const chatReducer = (state = chatState, action) => {
 
 
     case "FLUSH_CHATS":
-      state.AllChats=[];
+      state.AllChats = [];
       return {
         ...state
       }
@@ -142,45 +142,44 @@ const chatReducer = (state = chatState, action) => {
         (data) => data._id === action.payload
       );
       const elem = state.AllChats[index];
-      const updatedAllChats = [...state.AllChats]; 
+      const updatedAllChats = [...state.AllChats];
       updatedAllChats.splice(index, 1);
       updatedAllChats.unshift(elem);
       return {
         ...state,
-        AllChats: updatedAllChats, 
+        AllChats: updatedAllChats,
       };
 
     case "INACT_CHAT_NOTIFY":
-      state.AllChats=state.AllChats.map((data)=>{
-        if(data._id===action.payload)
-        {
+      state.AllChats = state.AllChats.map((data) => {
+        if (data._id === action.payload) {
           delete data.notify;
-          return {...data}
+          return { ...data }
         }
         return data;
       })
       return {
         ...state
       };
-    
-      case "UPDATE_CHAT_BAR":
-        state.AllChats = state.AllChats.map((val) => {
+
+    case "UPDATE_CHAT_BAR":
+      state.AllChats = state.AllChats.map((val) => {
         if (val._id === action.payload.id) {
-          const currentDate = new Date(); 
-        return {...val,latestMessage:{...val.latestMessage,content: action.payload.latestMessage},updatedAt:currentDate.toISOString()}
+          const currentDate = new Date();
+          return { ...val, latestMessage: { ...val.latestMessage, content: action.payload.latestMessage }, updatedAt: currentDate.toISOString() }
         }
         else
-        return val;
-        });
-        return {
-          ...state
-        }
-
-      case "ADD_INCOMING_USER_CHAT":
+          return val;
+      });
       return {
-          ...state,
-          AllChats:[action.payload,...state.AllChats]
-        }
+        ...state
+      }
+
+    case "ADD_INCOMING_USER_CHAT":
+      return {
+        ...state,
+        AllChats: [action.payload, ...state.AllChats]
+      }
 
 
     default:

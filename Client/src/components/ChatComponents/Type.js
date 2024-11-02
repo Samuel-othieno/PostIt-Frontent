@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 import { socket } from "../../socket/socket";
 import MicIcon from "@mui/icons-material/Mic";
 import SendIcon from "@mui/icons-material/Send";
-import { AddMessage, moveChatToTop, updateChatBar } from "../../services/Actions/Chat/action";
+import {
+  AddMessage,
+  moveChatToTop,
+  updateChatBar,
+} from "../../services/Actions/Chat/action";
 import CancelIcon from "@mui/icons-material/Cancel";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
@@ -29,11 +35,8 @@ export default function Type() {
   const [noSoundTimeout, setNoSoundTimeout] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
 
-  const {
-    transcript,
-    resetTranscript,
-    browserSupportsSpeechRecognition,
-  } = useSpeechRecognition();
+  const { transcript, resetTranscript, browserSupportsSpeechRecognition } =
+    useSpeechRecognition();
 
   useEffect(() => {
     setMessage(transcript);
@@ -254,16 +257,16 @@ export default function Type() {
         <SendIcon color="action" sx={{ width: 22 }}></SendIcon>
       </div>
       <textarea
-  ref={inputRef}
-  value={message}
-  onKeyDown={sendMessage}
-  onChange={messageHandler}
-  spellCheck="false"
-  data-gramm="false"
-  type="text"
-  placeholder="Type a message"
-  className="bg-gray-100 resize-none font-Roboto box-border max-[1024px]:px-8 px-[6%] flex text-md max-[900px]:text-sm w-[95%] py-[1%] outline-none h-[70%] rounded-3xl"
-></textarea>
+        ref={inputRef}
+        value={message}
+        onKeyDown={sendMessage}
+        onChange={messageHandler}
+        spellCheck="false"
+        data-gramm="false"
+        type="text"
+        placeholder="Type a message"
+        className="bg-gray-100 resize-none font-Roboto box-border max-[1024px]:px-8 px-[6%] flex text-md max-[900px]:text-sm w-[95%] py-[1%] outline-none h-[70%] rounded-3xl"
+      ></textarea>
     </div>
   );
 }

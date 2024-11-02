@@ -109,9 +109,9 @@ export default function ChatMessages() {
       clearTimeout(timer);
     };
   }, [data]);
-  
+
   if (isSet === null) return <Advertisement></Advertisement>;
-  
+
   const formatDateHeader = (date) => {
     const messageDate = new Date(date);
     if (isToday(messageDate)) {
@@ -125,10 +125,8 @@ export default function ChatMessages() {
 
   const isMessageNewDay = (current, previous) =>
     !previous ||
-  formatDateHeader(current.createdAt) !==
-  formatDateHeader(previous.createdAt);
-
-  
+    formatDateHeader(current.createdAt) !==
+      formatDateHeader(previous.createdAt);
 
   return (
     <div

@@ -12,7 +12,7 @@ export default {
     },
     fontFamily: {
       'Roboto': ['Roboto', 'sans-serif'],
-      'Poppins': ['Poppins', 'serif'] 
+      'Poppins': ['Poppins', 'serif']
     },
   },
   plugins: [],

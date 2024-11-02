@@ -17,7 +17,7 @@ const notify = (message) => {
     draggable: true,
     progress: undefined,
     theme: "colored",
-    });
+  });
 };
 
 
@@ -25,90 +25,86 @@ export default function Login() {
   return (
     <GoogleOAuthProvider clientId="438058612514-mr6pvrfg97crajaid4grj88l95vo8u82.apps.googleusercontent.com">
       <ToastContainer
-position="top-center"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="colored"
-/>
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <Main></Main>
     </GoogleOAuthProvider>
   )
 }
 
-export  async function action({request})
-{
+export async function action({ request }) {
 
-  const data=await request.formData();
-  const authdata={
-    email:data.get('email'),
-    password:data.get('password'),
-    pic:data.get('pic')
+  const data = await request.formData();
+  const authdata = {
+    email: data.get('email'),
+    password: data.get('password'),
+    pic: data.get('pic')
   }
 
-  const isGoogleAuth=data.get('name');
-  if(isGoogleAuth){
-    const response=await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/login`,{
-      method:request.method,
-      headers:{
-        'Content-type':'application/json'
+  const isGoogleAuth = data.get('name');
+  if (isGoogleAuth) {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/login`, {
+      method: request.method,
+      headers: {
+        'Content-type': 'application/json'
       },
-      body:JSON.stringify(authdata)
+      body: JSON.stringify(authdata)
     })
-  
-    const responseData=await response.json();
-  
-    if(responseData.status!=='fail')
-    {
-      localStorage.setItem('jwt',responseData.token);
+
+    const responseData = await response.json();
+
+    if (responseData.status !== 'fail') {
+      localStorage.setItem('jwt', responseData.token);
       return redirect('/home/message')
     }
 
-    const authData2={...authdata,name:isGoogleAuth}
-    const response2=await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/signup`,{
-      method:request.method,
-      headers:{
-        'Content-type':'application/json'
+    const authData2 = { ...authdata, name: isGoogleAuth }
+    const response2 = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/signup`, {
+      method: request.method,
+      headers: {
+        'Content-type': 'application/json'
       },
-      body:JSON.stringify(authData2)
+      body: JSON.stringify(authData2)
     });
 
-    const responseData2=await response2.json();
+    const responseData2 = await response2.json();
 
-  if(responseData2.status==='fail')
-  {
-    notify('Something went wrong')
-    return null;
+    if (responseData2.status === 'fail') {
+      notify('Something went wrong')
+      return null;
+    }
+    localStorage.setItem('jwt', responseData2.token);
+    return redirect('/home/message');
+
+
   }
-  localStorage.setItem('jwt',responseData2.token);
-  return redirect('/home/message');
 
 
-  }
-
-
-  const response=await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/login`,{
-    method:request.method,
-    headers:{
-      'Content-type':'application/json'
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/login`, {
+    method: request.method,
+    headers: {
+      'Content-type': 'application/json'
     },
-    body:JSON.stringify(authdata)
+    body: JSON.stringify(authdata)
   })
 
-  const responseData=await response.json();
+  const responseData = await response.json();
 
-  if(responseData.status==='fail')
-  {
+  if (responseData.status === 'fail') {
     notify('Something went wrong');
     return null;
   }
 
-  localStorage.setItem('jwt',responseData.token);
+  localStorage.setItem('jwt', responseData.token);
   return redirect('/home/message')
 
 
