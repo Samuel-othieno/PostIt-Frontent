@@ -23,8 +23,8 @@ export default function HomeChat() {
   const dispatch = useDispatch();
   const [chatModel, setChatModel] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [requestSent,setRequestSent]=useState(false);
-  const [isEmpty,setIsEmpty]=useState(false)
+  const [requestSent, setRequestSent] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(false)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -32,18 +32,18 @@ export default function HomeChat() {
   };
 
 
-  useEffect(()=>{
-   const chatfn=(chatid)=>{
-      console.log("REmove the chatbar for the id",chatid)
+  useEffect(() => {
+    const chatfn = (chatid) => {
+      console.log("REmove the chatbar for the id", chatid)
       dispatch(removeChat(chatid));
       dispatch(NullifyActiveChat());
     }
 
-    socket.on('removechatbar-recieve',chatfn)
-    return ()=>{
-      socket.off('removechatbar',chatfn);
+    socket.on('removechatbar-recieve', chatfn)
+    return () => {
+      socket.off('removechatbar', chatfn);
     }
-  },[])
+  }, [])
 
   useEffect(() => {
     const getAllChats = async () => {
@@ -57,14 +57,13 @@ export default function HomeChat() {
         },
       });
       const data = await response.json();
-      if(data.data.length===0)
-      setIsEmpty(true)
+      if (data.data.length === 0)
+        setIsEmpty(true)
 
       setIsLoading(false);
       dispatch(InitializeChat(data.data));
     };
-    if(state.length>0)
-    {
+    if (state.length > 0) {
       return;
     }
     getAllChats();
@@ -97,19 +96,19 @@ export default function HomeChat() {
       <div className="flex flex-row items-center  border-[1px] border-[#f5f5f5]">
         <ChatTitle openChatModel={openChatDetails}></ChatTitle>
       </div>
-        <div className=" border-[1px] overflow-y-scroll no-scrollbar border-[#f5f5f5]">
-          {isLoading&&<Loading></Loading>}
-          {!isLoading &&
-            state&&
-            state.map((data, index) => {
-              return (
-                <MotionAnimate key={index} animation="fadeInUp">
-                  <ChatBar select={selectChat} data={data}></ChatBar>
-                </MotionAnimate>
-              );
-            })}
-            {isEmpty===true&&state.length === 0 && <NoChats></NoChats>}
-        </div>
+      <div className=" border-[1px] overflow-y-scroll no-scrollbar border-[#f5f5f5]">
+        {isLoading && <Loading></Loading>}
+        {!isLoading &&
+          state &&
+          state.map((data, index) => {
+            return (
+              <MotionAnimate key={index} animation="fadeInUp">
+                <ChatBar select={selectChat} data={data}></ChatBar>
+              </MotionAnimate>
+            );
+          })}
+        {isEmpty === true && state.length === 0 && <NoChats></NoChats>}
+      </div>
       <div className="bg-[#F6F8FC] flex flex-col relative overflow-hidden">
         <ChatMessages></ChatMessages>
         <Type></Type>
