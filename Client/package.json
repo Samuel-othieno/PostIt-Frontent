@@ -36,7 +36,7 @@
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start", 
+    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
     "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -61,6 +61,10 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-transform-class-properties": "^7.25.9",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.25.9",
+    "@babel/plugin-transform-numeric-separator": "^7.25.9",
+    "@babel/plugin-transform-private-methods": "^7.25.9",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14"
