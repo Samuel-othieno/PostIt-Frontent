@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{html,js}"],
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{html,js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -9,7 +12,7 @@ module.exports = {
     },
     fontFamily: {
       'Roboto': ['Roboto', 'sans-serif'],
-      'Poppins': ['Poppins', 'serif'] // Ensure fonts with spaces have " " surrounding it.
+      'Poppins': ['Poppins', 'serif'] 
     },
   },
   plugins: [],
