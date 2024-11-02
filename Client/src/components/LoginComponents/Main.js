@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Input from './Input'
 import Square from './Square'
 import {GoogleLogin} from '@react-oauth/google'
-import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
 import { useSubmit } from 'react-router-dom'
 import { useNavigation } from 'react-router-dom'
 import { validate } from 'react-email-validator'
@@ -59,8 +59,8 @@ export default function Main() {
 
   const responseMessage = (response) => {
 
-    var token = response.credential;    ;
-    var decoded = jwt_decode(token);
+    var token = response.credential;
+    const decoded = jwtDecode(token)
      setloginData({email:decoded.email,password:decoded.sub});
     submitData(1,{email:decoded.email,password:decoded.sub},{...decoded});
 };
