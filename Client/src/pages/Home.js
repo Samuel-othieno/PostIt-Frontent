@@ -14,20 +14,24 @@ export default function Home() {
   useEffect(() => {
 
     const checkIfLoggedIn = async () => {
-      const cookie = localStorage.getItem('jwt');
+      try {
+        const cookie = localStorage.getItem('jwt');
       const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/protect`, {
         method: 'post',
         headers: {
           'Content-type': 'application/json',
           'Authorization': `Bearer ${cookie}`
-        }
+        },
+        body: {}
       })
 
       const data = await response.json();
       if (data.status === 'success') {
         navigate('/home/message', { replace: true })
       }
-      else {
+      } catch (error) {
+        console.log(error)        
+      }finally{
         setIsLoading(false);
       }
 
