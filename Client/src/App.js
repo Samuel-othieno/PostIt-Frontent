@@ -1,4 +1,3 @@
-import './input.css'
 import {
   createBrowserRouter,
   RouterProvider,
